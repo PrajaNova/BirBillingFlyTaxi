@@ -1,10 +1,10 @@
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   BadgeCheck,
-  CalendarDays,
   Camera,
   Car,
   CheckCircle2,
+  ChevronLeft,
   ChevronRight,
   Clock3,
   MapPin,
@@ -13,7 +13,6 @@ import {
   Phone,
   PlaneTakeoff,
   ShieldCheck,
-  UserRound,
   Wind,
   X,
 } from "lucide-react";
@@ -53,6 +52,39 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const touchStartX = useRef<number | null>(null);
+
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const showPrev = useCallback(
+    () => setLightbox((i) => (i === null ? i : (i - 1 + gallery.length) % gallery.length)),
+    [],
+  );
+  const showNext = useCallback(
+    () => setLightbox((i) => (i === null ? i : (i + 1) % gallery.length)),
+    [],
+  );
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") showPrev();
+      if (event.key === "ArrowRight") showNext();
+    }
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox, closeLightbox, showPrev, showNext]);
+
+  const { galleryRowTop, galleryRowBottom } = useMemo(() => {
+    const indexed = gallery.map((item, index) => ({ item, index }));
+    const half = Math.ceil(indexed.length / 2);
+    return { galleryRowTop: indexed.slice(0, half), galleryRowBottom: indexed.slice(half) };
+  }, []);
 
   const whatsappUrl = useMemo(() => {
     const text = [
@@ -142,7 +174,7 @@ function App() {
       <main id="top">
         <section className="hero-section" aria-labelledby="hero-title">
           <div className="hero-media" aria-hidden="true">
-            <img src="/assets/hero-paragliding.png" alt="" />
+            <img src="/assets/DSC_2063.JPG" alt="" />
           </div>
           <div className="hero-overlay" />
 
@@ -200,15 +232,22 @@ function App() {
         </section>
 
         <section className="section split-section">
-          <div>
+          <div className="split-text">
             <p className="eyebrow">Why FlyTaxi</p>
             <h2>One team for the sky and the road.</h2>
+            <p>
+              Visitors do not need to juggle a pilot contact, taxi contact, and timing
+              updates. FlyTaxi keeps the launch simple: flight inquiry, pickup point,
+              timing confirmation, and takeoff support in one conversation.
+            </p>
           </div>
-          <p>
-            Visitors do not need to juggle a pilot contact, taxi contact, and timing
-            updates. FlyTaxi keeps the launch simple: flight inquiry, pickup point,
-            timing confirmation, and takeoff support in one conversation.
-          </p>
+          <figure className="split-media">
+            <img
+              src="/assets/DSC_0689.JPG"
+              alt="A FlyTaxi pilot and guest getting ready together on the ground before takeoff"
+              loading="lazy"
+            />
+          </figure>
         </section>
 
         <section className="section" id="packages" aria-labelledby="packages-title">
@@ -284,14 +323,36 @@ function App() {
         <section className="section" id="gallery" aria-labelledby="gallery-title">
           <div className="section-heading">
             <p className="eyebrow">Gallery</p>
-            <h2 id="gallery-title">Generated launch visuals for v1.</h2>
+            <h2 id="gallery-title">Real moments from the Bir Billing sky.</h2>
           </div>
-          <div className="gallery-grid">
-            {gallery.map((item, index) => (
-              <figure className={`gallery-card gallery-card-${index + 1}`} key={item}>
-                <img src="/assets/hero-paragliding.png" alt="" loading="lazy" />
-                <figcaption>{item}</figcaption>
-              </figure>
+          <div className="gallery-marquee">
+            {[galleryRowTop, galleryRowBottom].map((row, rowIndex) => (
+              <div
+                className={`marquee-row ${rowIndex === 0 ? "marquee-left" : "marquee-right"}`}
+                key={rowIndex}
+              >
+                <div className="marquee-track">
+                  {[...row, ...row].map((entry, k) => {
+                    const isClone = k >= row.length;
+                    return (
+                      <button
+                        type="button"
+                        className="gallery-card"
+                        key={`${rowIndex}-${k}`}
+                        onClick={() => setLightbox(entry.index)}
+                        aria-label={`Open photo ${entry.index + 1} of ${gallery.length}`}
+                        aria-hidden={isClone || undefined}
+                        tabIndex={isClone ? -1 : 0}
+                      >
+                        <img src={entry.item.src} alt={entry.item.alt} loading="lazy" />
+                        {entry.item.caption ? (
+                          <span className="gallery-caption">{entry.item.caption}</span>
+                        ) : null}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             ))}
           </div>
         </section>
@@ -436,6 +497,74 @@ function App() {
           </a>
         </div>
       </footer>
+
+      {lightbox !== null ? (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Photo viewer"
+          onClick={closeLightbox}
+        >
+          <button
+            type="button"
+            className="lightbox-close"
+            onClick={closeLightbox}
+            aria-label="Close photo viewer"
+          >
+            <X size={26} />
+          </button>
+
+          <button
+            type="button"
+            className="lightbox-nav lightbox-prev"
+            onClick={(event) => {
+              event.stopPropagation();
+              showPrev();
+            }}
+            aria-label="Previous photo"
+          >
+            <ChevronLeft size={30} />
+          </button>
+
+          <figure
+            className="lightbox-stage"
+            onClick={(event) => event.stopPropagation()}
+            onTouchStart={(event) => {
+              touchStartX.current = event.touches[0].clientX;
+            }}
+            onTouchEnd={(event) => {
+              if (touchStartX.current === null) return;
+              const dx = event.changedTouches[0].clientX - touchStartX.current;
+              if (dx > 50) showPrev();
+              else if (dx < -50) showNext();
+              touchStartX.current = null;
+            }}
+          >
+            <img src={gallery[lightbox].src} alt={gallery[lightbox].alt} />
+            <figcaption>
+              {gallery[lightbox].caption ? (
+                <span>{gallery[lightbox].caption}</span>
+              ) : null}
+              <span className="lightbox-count">
+                {lightbox + 1} / {gallery.length}
+              </span>
+            </figcaption>
+          </figure>
+
+          <button
+            type="button"
+            className="lightbox-nav lightbox-next"
+            onClick={(event) => {
+              event.stopPropagation();
+              showNext();
+            }}
+            aria-label="Next photo"
+          >
+            <ChevronRight size={30} />
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }

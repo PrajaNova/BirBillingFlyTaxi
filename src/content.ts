@@ -1,8 +1,8 @@
 export const contact = {
   brand: "BirBilling FlyTaxi",
   tagline: "Feel like a bird",
-  phoneDisplay: "+91 XXXXX XXXXX",
-  whatsappNumber: "91XXXXXXXXXX",
+  phoneDisplay: "+91 85274 70972",
+  whatsappNumber: "918527470972",
   location: "Bir Billing, Himachal Pradesh",
 };
 
@@ -54,10 +54,111 @@ export const steps = [
 ];
 
 export const gallery = [
-  "Sunset ridge flights",
-  "Billing takeoff views",
-  "Bir landing moments",
-  "FlyTaxi pickup support",
+  {
+    src: "/assets/DSC_0578.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+    caption: "Flying above Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0169.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+    caption: "Ready to fly",
+  },
+  {
+    src: "/assets/DSC_0587.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+    caption: "Feel like a bird",
+  },
+  {
+    src: "/assets/DSC_0185.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+    caption: "Mountain flight moments",
+  },
+  {
+    src: "/assets/DSC_0682.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+    caption: "Over the village at sunset",
+  },
+  {
+    src: "/assets/DSC_0288.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0187.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0595.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+    caption: "Happy landings",
+  },
+  {
+    src: "/assets/DSC_2063.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+    caption: "Pure joy in the air",
+  },
+  {
+    src: "/assets/DSC_0178.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0683.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0190.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+    caption: "Coming in to land",
+  },
+  {
+    src: "/assets/DSC_2067.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+    caption: "The view from above",
+  },
+  {
+    src: "/assets/DSC_0314.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0591.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0181.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0678.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0583.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_2071.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0594.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0319.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_2736.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_3413.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
+  {
+    src: "/assets/DSC_0168_1.JPG",
+    alt: "Tandem paragliding moment in Bir Billing",
+  },
 ];
 
 export const faqs = [
