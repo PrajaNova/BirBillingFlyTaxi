@@ -105,13 +105,23 @@ summary:focus-visible {
 
 .brand-mark {
   display: grid;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   place-items: center;
-  border: 2px solid var(--yellow);
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 193, 7, 0.18), rgba(233, 30, 99, 0.14));
-  color: var(--yellow);
+  overflow: hidden;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-logo {
+  width: clamp(96px, 14vw, 128px);
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.45));
 }
 
 .brand strong,
@@ -877,6 +887,11 @@ details p {
       linear-gradient(90deg, rgba(5, 5, 5, 0.82), rgba(5, 5, 5, 0.18));
   }
 
+  /* Keep the paraglider (upper-centre of the shot) framed in the tall portrait crop */
+  .hero-media img {
+    object-position: 50% 30%;
+  }
+
   .hero-actions,
   .safety-list,
   .footer,
@@ -1062,5 +1077,263 @@ details p {
 
   .marquee-row {
     overflow-x: auto;
+  }
+}
+
+/* Courses Page Styles */
+.courses-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 180px 24px 80px;
+  background: radial-gradient(circle at 10% 20%, rgba(255, 193, 7, 0.05) 0%, transparent 40%), #050505;
+  border-bottom: 1px solid var(--border);
+}
+
+.courses-hero-content {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+
+.courses-hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  margin-bottom: 24px;
+}
+
+.lead {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--soft);
+  max-width: 800px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: min(100% - 32px, 1180px);
+  margin: 0 auto;
+}
+
+.course-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #121212 0%, #080808 100%);
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 193, 7, 0.4);
+  box-shadow: 0 10px 40px rgba(255, 193, 7, 0.08);
+}
+
+/* Highlight the first beginner course card, similar to the screenshot and our packages */
+.course-card#course-p1-p2 {
+  border-color: rgba(255, 193, 7, 0.5);
+  background: linear-gradient(180deg, rgba(255, 193, 7, 0.06) 0%, #080808 100%);
+}
+
+.course-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.course-card-header h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text);
+  margin: 0;
+}
+
+.course-duration {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.course-copy {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.course-price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.course-price span {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--soft);
+}
+
+.course-price strong {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.course-inclusions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 0 36px;
+  padding: 0;
+  list-style: none;
+  flex-grow: 1;
+}
+
+.course-inclusions li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--soft);
+}
+
+.course-inclusions svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--yellow);
+}
+
+.course-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  border-radius: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: all 200ms ease;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+}
+
+.course-btn-enroll {
+  background: var(--yellow);
+  color: #111111;
+}
+
+.course-btn-enroll:hover {
+  background: #ffcc00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
+}
+
+.course-btn-whatsapp {
+  background: #25D366;
+  color: #ffffff;
+}
+
+.course-btn-whatsapp:hover {
+  background: #20ba5a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+}
+
+.course-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Partnership section styling */
+.partnership-section {
+  padding: 92px 0;
+}
+
+.partnership-panel {
+  width: 100%;
+  padding: 48px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #111111 0%, #080808 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.partnership-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.partnership-panel h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 20px;
+}
+
+.partnership-panel p {
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--soft);
+  margin-bottom: 32px;
+}
+
+/* Desktop nav active state */
+.desktop-nav a.active {
+  color: var(--text);
+  border-color: var(--yellow);
+}
+
+/* Mobile nav active state */
+.mobile-nav a.active {
+  color: var(--yellow);
+}
+
+@media (max-width: 960px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .courses-hero {
+    padding: 130px 16px 50px;
+  }
+  
+  .courses-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+    padding: 0 16px;
+  }
+  
+  .course-card {
+    padding: 24px;
+  }
+  
+  .partnership-panel {
+    padding: 24px 16px;
   }
 }

@@ -7,35 +7,51 @@ export const contact = {
 };
 
 export const navItems = [
-  ["Packages", "#packages"],
-  ["Safety", "#safety"],
-  ["Gallery", "#gallery"],
-  ["Booking", "#booking"],
-  ["Contact", "#contact"],
+  ["Home", "#/"],
+  ["Packages", "#/packages"],
+  ["Courses", "#/courses"],
+  ["Safety", "#/safety"],
+  ["Gallery", "#/gallery"],
+  ["Booking", "#/booking"],
 ] as const;
 
 export const packages = [
   {
-    name: "Tandem Flight",
-    duration: "15-25 min airtime",
+    name: "Classic Paragliding",
+    duration: "20-minute joy flight",
     price: "Confirm on WhatsApp",
-    copy: "A smooth first flight with a certified pilot from Billing takeoff to Bir landing.",
-    inclusions: ["Pilot assisted flight", "Basic pre-flight briefing", "Landing support"],
+    copy: "A taste of what paragliding can be. Fly from 2500m at Billing top to 1400m landing site in Bir.",
+    inclusions: [
+      "20-minute joy flight",
+      "Certified experienced pilot",
+      "Fly from 2500m to 1400m",
+      "Breathtaking valley views",
+    ],
   },
   {
-    name: "High Fly",
-    duration: "30-45 min airtime",
+    name: "Prime Paragliding",
+    duration: "Exciting 40-min flight",
     price: "Confirm on WhatsApp",
-    copy: "Longer air time for guests who want bigger views and a more complete mountain flight.",
-    inclusions: ["Longer soaring window", "Priority flight slot", "Optional video add-on"],
+    copy: "Double the airtime! Soar above takeoff site, glide to a nearby ridge, and take a longer ride.",
+    inclusions: [
+      "Exciting 40 minutes airtime",
+      "Soar above takeoff site",
+      "Glide to a nearby ridge",
+      "Priority flight slot",
+    ],
     featured: true,
   },
   {
-    name: "Flight + Pickup",
-    duration: "Door pickup support",
+    name: "Cross Country (XC)",
+    duration: "90 to 120-min flight",
     price: "Confirm on WhatsApp",
-    copy: "Paragliding plus FlyTaxi coordination from your hotel, bus stop, or nearby stay.",
-    inclusions: ["Pickup planning", "Takeoff transfer", "Return guidance"],
+    copy: "Sustained thermic flying with top pilots. Fly as far as Palampur or Dharamshala weather permitting.",
+    inclusions: [
+      "90 to 120 minutes airtime",
+      "Sustained thermic soaring",
+      "Fly towards Palampur/Dharamshala",
+      "Crème de la crème pilots",
+    ],
   },
 ];
 
@@ -179,3 +195,53 @@ export const faqs = [
     answer: "GoPro video can be requested as an add-on while confirming your slot.",
   },
 ];
+
+export const courses = [
+  {
+    id: "p1-p2",
+    name: "Beginner's P1 & P2 Course",
+    duration: "7-8 Days",
+    price: "₹25,000",
+    copy: "Understand your equipment, ground control, and complete 5 solo flights.",
+    inclusions: [
+      "Getting Started: Understand your equipment, how to care for it, and the basics of forward launches.",
+      "On-Ground Mastery: Gain confidence in glider control, safe takeoff, and landing techniques.",
+      "The Art of Flying: Learn directional control, smooth turns, and essential air traffic rules.",
+      "Weather Wisdom: Discover how to identify safe weather and wind conditions for your flight.",
+      "5 Solo Flights: Take to the skies on your own under direct guidance.",
+    ],
+    ctaLabel: "ENROLL NOW",
+    ctaType: "enroll",
+  },
+  {
+    id: "p3",
+    name: "Soar Higher: P3 Intermediate Course",
+    duration: "15 Days",
+    price: "₹35,000",
+    copy: "Advance your launching skills, master maneuvers, and start thermal/ridge soaring.",
+    inclusions: [
+      "Reverse launching and ground kiting for better control.",
+      "Techniques like pitch, yaw, and roll control to navigate the skies.",
+      "Exciting maneuvers like 360-degree turns and \"big ears\" for safe descents.",
+      "An introduction to thermal and ridge soaring, where you'll gain height effortlessly.",
+    ],
+    ctaLabel: "ENROLL NOW",
+    ctaType: "enroll",
+  },
+  {
+    id: "p4",
+    name: "Master the Skies: P4 Advanced Course",
+    duration: "20-25 Days",
+    price: "₹60,000",
+    copy: "Master cross-country flight planning, thermals, and long distance glides.",
+    inclusions: [
+      "Advanced kiting skills and sharp turns for precision flying.",
+      "Thermalling and ridge soaring to ride the wind and gain altitude.",
+      "Speed bar flying for long-distance glides up to 20 km!",
+      "In-depth meteorology for safe and strategic flight planning.",
+      "15 Solo Flights: Build advanced hours in diverse weather conditions.",
+    ],
+    ctaLabel: "ENROLL NOW",
+    ctaType: "enroll",
+  },
+] as const;
