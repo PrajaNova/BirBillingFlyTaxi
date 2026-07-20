@@ -196,7 +196,18 @@ export const faqs = [
   },
 ];
 
-export const courses = [
+export type CtaType = "enroll" | "whatsapp";
+
+export const courses: {
+  id: string;
+  name: string;
+  duration: string;
+  price: string;
+  copy: string;
+  inclusions: string[];
+  ctaLabel: string;
+  ctaType: CtaType;
+}[] = [
   {
     id: "p1-p2",
     name: "Beginner's P1 & P2 Course",
@@ -244,4 +255,4 @@ export const courses = [
     ctaLabel: "ENROLL NOW",
     ctaType: "enroll",
   },
-] as const;
+];
