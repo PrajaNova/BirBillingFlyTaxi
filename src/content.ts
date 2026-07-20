@@ -4,6 +4,10 @@ export const contact = {
   phoneDisplay: "+91 85274 70972",
   whatsappNumber: "918527470972",
   location: "Bir Billing, Himachal Pradesh",
+  address: "2PQC+4HJ, Chaugan, Himachal Pradesh, India",
+  mapsUrl: "https://maps.google.com/?q=2PQC+4HJ,Chaugan,Himachal+Pradesh,India",
+  instagram: "@kuldeepthakurkd",
+  instagramUrl: "https://www.instagram.com/kuldeepthakurkd",
 };
 
 export const navItems = [

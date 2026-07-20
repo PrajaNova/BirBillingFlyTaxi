@@ -7,6 +7,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock3,
+  Instagram,
   MapPin,
   Menu,
   Mountain,
@@ -628,7 +629,9 @@ function App() {
               </p>
               <div className="direct-contact" style={{ marginTop: "24px" }}>
                 <Phone size={20} />
-                <span>{contact.phoneDisplay}</span>
+                <a href={`tel:+${contact.whatsappNumber}`} style={{ color: "inherit", textDecoration: "none" }}>
+                  {contact.phoneDisplay}
+                </a>
               </div>
             </div>
 
@@ -740,12 +743,22 @@ function App() {
             </span>
           </a>
           <p>{contact.tagline}. Paragliding and pickup support in {contact.location}.</p>
+          <div className="footer-contact-details">
+            <a href={contact.mapsUrl} target="_blank" rel="noreferrer" className="footer-detail-link">
+              <MapPin size={15} />
+              <span>{contact.address}</span>
+            </a>
+            <a href={contact.instagramUrl} target="_blank" rel="noreferrer" className="footer-detail-link">
+              <Instagram size={15} />
+              <span>{contact.instagram}</span>
+            </a>
+          </div>
         </div>
         <div className="footer-links">
-          <a href="#packages" onClick={(e) => navigateTo("#packages", e)}>
+          <a href="#/packages" onClick={(e) => navigateTo("#/packages", e)}>
             Packages
           </a>
-          <a href="#booking" onClick={(e) => navigateTo("#booking", e)}>
+          <a href="#/booking" onClick={(e) => navigateTo("#/booking", e)}>
             Booking
           </a>
           <a href={whatsappUrl} target="_blank" rel="noreferrer">
@@ -753,6 +766,12 @@ function App() {
           </a>
         </div>
       </footer>
+      <div className="footer-byline">
+        Developed by{" "}
+        <a href="https://www.prajanova.com/" target="_blank" rel="noreferrer">
+          PrajaNova
+        </a>
+      </div>
 
       {lightbox !== null ? (
         <div

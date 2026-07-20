@@ -804,6 +804,47 @@ details p {
   line-height: 1.7;
 }
 
+.footer-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.footer-detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-detail-link:hover {
+  color: var(--yellow);
+}
+
+.footer-byline {
+  text-align: center;
+  padding: 14px 0 20px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.footer-byline a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+
+.footer-byline a:hover {
+  opacity: 1;
+  color: var(--yellow);
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
